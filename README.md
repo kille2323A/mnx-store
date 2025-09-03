@@ -1,1 +1,1 @@
-# mnx-store
+index.html
