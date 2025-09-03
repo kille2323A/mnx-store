@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>MNX STORE - Pets Grow a Garden</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compre pets do Grow a Garden com segurança e confiança. MNX STORE, sua loja confiável de pets virtuais!">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+  <style>
+    :root {
+      --azul-escuro: #17517E;
+      --azul-claro: #82BFE0;
+      --verde: #44B37F;
+      --verde-escuro: #238C54;
+      --amarelo: #F8C146;
+      --cinza: #f5f7fa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      background: var(--cinza);
+      color: #222;
+    }
+    header {
+      background: linear-gradient(90deg, var(--azul-escuro) 80%, var(--verde) 100%);
+      color: #fff;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(23,81,126,0.06);
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: .7em;
+    }
+    header img.logo {
+      height: 38px;
+      width: 38px;
+      filter: drop-shadow(1px 1px 5px #fff5);
+    }
+    nav {
+      font-size: 1.05rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    nav a:hover {
+      color: var(--amarelo);
+    }
+    main {
+      max-width: 1150px;
+      margin: 2.2rem auto 1.5rem auto;
+      padding: 1.2rem;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px #0001;
+    }
+    .intro {
+      background: linear-gradient(90deg, #fff 65%, var(--azul-claro) 100%);
+      border-radius: 12px;
+      padding: 1.2rem 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .intro .text {
+      flex: 2;
+      min-width: 220px;
+    }
+    .intro h2 {
+      margin-top: 0;
+      color: var(--azul-escuro);
+      font-size: 1.7rem;
+    }
+    .intro p {
+      font-size: 1.15rem;
+      color: #285;
+    }
+    .intro img {
+      height: 80px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #44B37F33;
+    }
+    #produtos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
+      justify-content: center;
+    }
+    .card {
+      background: #fafdff;
+      border: 1.5px solid var(--azul-claro);
+      border-radius: 15px;
+      box-shadow: 0 2px 8px #0001;
+      width: 230px;
+      padding: 1.1rem;
+      text-align: center;
+      transition: box-shadow .2s, transform .2s;
+      position: relative;
+    }
+    .card:hover {
+      box-shadow: 0 6px 24px #17517e1d;
+      transform: translateY(-7px) scale(1.025);
+      border-color: var(--verde);
+    }
+    .card img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: .7rem;
+      background: #e7f9f1;
+      border-radius: 50%;
+      border: 2px solid var(--verde);
+    }
+    .card h3 {
+      margin: .4rem 0 .2rem 0;
+      color: var(--azul-escuro);
+      font-size: 1.2rem;
+    }
+    .card p {
+      margin: .15rem 0 .8rem 0;
+      color: #444;
+      font-size: 1.03rem;
+    }
+    .card .price {
+      font-size: 1.13rem;
+      font-weight: bold;
+      color: var(--verde-escuro);
+      margin-bottom: .5rem;
+    }
+    .card button {
+      background: linear-gradient(90deg, var(--verde) 80%, var(--amarelo) 100%);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: .6em 1.2em;
+      font-size: 1em;
+      font-weight: bold;
+      box-shadow: 0 1px 6px #44b37f25;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    .card button:hover {
+      background: linear-gradient(90deg, var(--amarelo) 70%, var(--verde) 100%);
+      color: #17517E;
+      transform: scale(1.07);
+    }
+    footer {
+      background: var(--azul-escuro);
+      color: #fff;
+      text-align: center;
+      padding: 2.2rem 1rem 1.2rem 1rem;
+      font-size: 1rem;
+      border-radius: 18px 18px 0 0;
+      letter-spacing: .1em;
+      margin: 2rem 0 0 0;
+    }
+    /* Chat flutuante */
+    #chatbot-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(90deg, var(--verde) 60%, var(--amarelo) 100%);
+      color: #fff;
+      z-index: 999;
+      border: none;
+      border-radius: 50%;
+      width: 68px;
+      height: 68px;
+      box-shadow: 0 4px 20px #44B37F77;
+      font-size: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow .2s, background .2s;
+    }
+    #chatbot-btn:hover {
+      box-shadow: 0 6px 32px #f8c14699;
+      background: linear-gradient(90deg, var(--amarelo) 80%, var(--verde) 100%);
+      color: var(--azul-escuro);
+    }
+    #chatbot-window {
+      display: none;
+      position: fixed;
+      bottom: 110px;
+      right: 40px;
+      width: 320px;
+      max-width: 96vw;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 36px #0002;
+      z-index: 1000;
+      padding: 0;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1.5px solid var(--verde);
+      animation: fadeInUp .33s;
+    }
+    @keyframes fadeInUp {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    #chatbot-header {
+      background: linear-gradient(90deg, var(--azul-escuro) 80%, var(--verde) 100%);
+      color: #fff;
+      font-weight: bold;
+      padding: .8rem 1.1rem;
+      font-size: 1.07rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #chatbot-header button {
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    #chatbot-messages {
+      background: #f8fcfb;
+      padding: 1rem;
+      height: 230px;
+      max-height: 39vh;
+      overflow-y: auto;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6em;
+    }
+    .chatmsg {
+      padding: .5em .9em;
+      border-radius: 10px;
+      margin-bottom: .2em;
+      max-width: 80%;
+      word-break: break-word;
+      box-shadow: 0 1px 8px #44b37f17;
+    }
+    .chatbot { background: #e2f7ee; color: var(--azul-escuro); align-self: flex-start; }
+    .user { background: #82bfe0; color: #fff; align-self: flex-end; }
+    #chatbot-input-area {
+      display: flex;
+      border-top: 1px solid #e2f7ee;
+      background: #fff;
+    }
+    #chatbot-input {
+      flex: 1;
+      border: none;
+      padding: .7em 1em;
+      font-size: 1rem;
+      outline: none;
+      background: #fff;
+    }
+    #chatbot-send {
+      background: var(--verde);
+      color: #fff;
+      border: none;
+      border-radius: 0 0 14px 0;
+      padding: .7em 1.1em;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    #chatbot-send:hover { background: var(--amarelo); color: var(--azul-escuro);}
+    @media (max-width: 900px) {
+      main { padding: .5rem; }
+      .intro { flex-direction: column; gap: 1rem; padding: 1rem; }
+      #produtos { gap: 1.1rem; }
+      .card { width: 92vw; max-width: 320px; }
+    }
+    @media (max-width: 700px) {
+      header, .intro { flex-direction: column; gap: .5rem; padding: 1rem; align-items: flex-start; }
+      header, footer { font-size: .98rem; }
+      .intro h2 { font-size: 1.18rem;}
+      .intro { padding: .7rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo MNX STORE">
+      <span>MNX STORE</span>
+    </div>
+    <nav>
+      <a href="#produtos">Pets</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+  <main>
+    <section class="intro">
+      <div class="text">
+        <h2>Bem-vindo à MNX STORE!</h2>
+        <p>Compre <strong>pets do Grow a Garden</strong> com total confiança, suporte e agilidade.<br>
+        Escolha seu pet favorito, pague com segurança e receba rápido no seu jogo.<br>
+        <span style="color:var(--azul-escuro); font-weight:500;">Atendimento exclusivo e suporte humanizado.</span></p>
+      </div>
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="MNX Store Mascote">
+    </section>
+    <section id="produtos">
+      <!-- Cards de pets serão inseridos pelo JS -->
+    </section>
+  </main>
+  <footer id="contato">
+    &copy; 2025 MNX STORE &middot; Grow a Garden Pets<br>
+    Dúvidas? Fale conosco pelo chat!
+  </footer>
+  <!-- Chatbot flutuante -->
+  <button id="chatbot-btn" aria-label="Atendimento"><span>💬</span></button>
+  <div id="chatbot-window">
+    <div id="chatbot-header">
+      <span>Atendimento MNX STORE</span>
+      <button id="chatbot-close" aria-label="Fechar">✖</button>
+    </div>
+    <div id="chatbot-messages">
+      <div class="chatmsg chatbot">Olá! 👋<br>Como posso ajudar você hoje?</div>
+    </div>
+    <div id="chatbot-input-area">
+      <input id="chatbot-input" type="text" placeholder="Digite sua mensagem...">
+      <button id="chatbot-send">Enviar</button>
+    </div>
+  </div>
+  <script>
+    // Pets disponíveis (exemplo)
+    const pets = [
+      {
+        nome: "Tanuki Verde",
+        descricao: "Pet raro, aumenta produção de folhas no Grow a Garden.",
+        preco: 59.90,
+        img: "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+      },
+      {
+        nome: "Bunny Dourado",
+        descricao: "Pet especial, bônus de colheita e charme.",
+        preco: 89.90,
+        img: "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+      },
+      {
+        nome: "Panda Azul",
+        descricao: "Pet épico, acelera crescimento das plantas.",
+        preco: 99.90,
+        img: "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+      },
+      {
+        nome: "Raposa Rosada",
+        descricao: "Pet fofo, aumenta sorte nas sementes.",
+        preco: 69.90,
+        img: "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+      }
+    ];
+
+    // Renderiza os cards dos pets
+    function renderPets() {
+      const container = document.getElementById('produtos');
+      container.innerHTML = "";
+      pets.forEach((pet, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${pet.img}" alt="${pet.nome}">
+          <h3>${pet.nome}</h3>
+          <p>${pet.descricao}</p>
+          <p class="price">R$ ${pet.preco.toFixed(2)}</p>
+          <button onclick="comprarPet('${pet.nome}')">Comprar</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // "Comprar" - só alerta por enquanto
+    function comprarPet(nome) {
+      alert("Você escolheu o pet: " + nome + ".\nEntre em contato pelo chat para finalizar sua compra!");
+    }
+
+    // Chatbot simples
+    const chatbotBtn = document.getElementById('chatbot-btn');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotSend = document.getElementById('chatbot-send');
+
+    chatbotBtn.onclick = function() {
+      chatbotWindow.style.display = 'flex';
+      chatbotInput.focus();
+    };
+    chatbotClose.onclick = function() {
+      chatbotWindow.style.display = 'none';
+    };
+    // Enviar mensagem
+    function sendMessage() {
+      const msg = chatbotInput.value.trim();
+      if (!msg) return;
+      appendMsg(msg, 'user');
+      chatbotInput.value = '';
+      setTimeout(() => {
+        appendMsg(respostaAutomatica(msg), 'chatbot');
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }, 600);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+    chatbotSend.onclick = sendMessage;
+    chatbotInput.onkeydown = function(e){ if(e.key==='Enter') sendMessage(); };
+
+    function appendMsg(msg, type) {
+      const div = document.createElement('div');
+      div.className = 'chatmsg ' + type;
+      div.innerHTML = msg;
+      chatbotMessages.appendChild(div);
+    }
+
+    function respostaAutomatica(msg) {
+      msg = msg.toLowerCase();
+      if(msg.includes('pet') || msg.includes('animais') || msg.includes('produto'))
+        return "Temos pets incríveis! Veja acima e clique em Comprar para saber mais. Precisa de recomendação?";
+      if(msg.includes('como comprar') || msg.includes('pagamento') || msg.includes('pix'))
+        return "Para comprar, clique em Comprar no pet desejado, depois fale conosco aqui no chat para finalizar pelo Pix ou outro método.";
+      if(msg.includes('entrega') || msg.includes('receber'))
+        return "A entrega do pet é feita no Grow a Garden logo após confirmação do pagamento. Rápido e seguro!";
+      if(msg.includes('suporte') || msg.includes('ajuda'))
+        return "Estou aqui para ajudar! Pergunte sua dúvida ou peça para falar com um atendente humano.";
+      if(msg.includes('promo') || msg.includes('desconto'))
+        return "Fique de olho nas promoções! Se quiser um cupom, pergunte no chat 😄";
+      if(msg.includes('olá') || msg.includes('oi'))
+        return "Olá! Em que posso ajudar hoje?";
+      if(msg.includes('obrigado') || msg.includes('valeu'))
+        return "Qualquer coisa, só chamar! 💚";
+      return "Sua mensagem foi recebida! Um atendente humano responderá em breve, se precisar de ajuda detalhada.";
+    }
+
+    // Inicialização
+    renderPets();
+  </script>
+</body>
+</html>
